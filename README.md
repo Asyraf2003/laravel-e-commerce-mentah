@@ -1,4 +1,3 @@
-```
 <p align="center">
   <a href="https://laravel.com" target="_blank">
     <img src="https://laravel.com/img/logomark.min.svg" width="90" alt="Laravel Logo">
@@ -210,4 +209,3 @@ Open-sourced under the [MIT License](https://opensource.org/licenses/MIT).
 - This repo is intentionally **bare** to make it easy to modify for your own use.
 
 ---
-```
