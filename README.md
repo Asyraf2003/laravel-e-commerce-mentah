@@ -1,61 +1,213 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
-
+```
 <p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
+  <a href="https://laravel.com" target="_blank">
+    <img src="https://laravel.com/img/logomark.min.svg" width="90" alt="Laravel Logo">
+  </a>
 </p>
 
-## About Laravel
+<h1 align="center">Laravel E-Commerce (Raw Version)</h1>
+<p align="center">Simple Laravel 12 E-Commerce Project with RajaOngkir & Midtrans Integration</p>
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+---
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## 🧱 Overview
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+This repository contains a **raw and educational version** of a Laravel 12 e-commerce project.  
+It focuses on backend logic and integration — no frontend frameworks, no heavy styling.  
+Inside, you’ll find **ready-to-connect code for RajaOngkir (shipping)** and **Midtrans (payment)** systems.
 
-## Learning Laravel
+This project is ideal for those who want to **learn how to connect APIs manually** and understand how an e-commerce system works from the ground up.
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+---
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+## 📦 Features
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+- ✅ Laravel 12 base setup  
+- 📦 RajaOngkir Starter API integration (for Indonesian shipping rates)  
+- 💳 Midtrans Sandbox integration (for simulated payments)  
+- 🧾 Simple product structure and checkout flow  
+- 🧠 Educational code structure (easy to modify & extend)
 
-## Laravel Sponsors
+---
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+## ⚙️ Requirements
 
-### Premium Partners
+- PHP 8.2+  
+- Composer  
+- MySQL / MariaDB  
+- RajaOngkir Starter API key  
+- Midtrans Sandbox account  
 
-- **[Vehikl](https://vehikl.com)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Redberry](https://redberry.international/laravel-development)**
-- **[Active Logic](https://activelogic.com)**
+---
 
-## Contributing
+## 🚀 Installation
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+```bash
+# 1. Clone the repository
+git clone https://github.com/Asyraf2003/laravel-e-commerce-mentah.git
 
-## Code of Conduct
+# 2. Enter the project directory
+cd laravel-e-commerce-mentah
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+# 3. Install dependencies
+composer install
 
-## Security Vulnerabilities
+# 4. Copy environment example file
+cp .env.example .env
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+# 5. Generate application key
+php artisan key:generate
 
-## License
+# 6. Run migrations (create tables)
+php artisan migrate
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+# 7. Serve the app
+php artisan serve
+```
+
+Default local URL: **http://127.0.0.1:8000**
+
+---
+
+## 🧩 API Configuration (.env)
+
+Open your `.env` file and edit these values to enable RajaOngkir & Midtrans.
+
+### 🔹 RajaOngkir (Shipping)
+
+> Register at [https://rajaongkir.com](https://rajaongkir.com) → Dashboard → Get your **Starter API Key**
+
+```dotenv
+# RAJAONGKIR CONFIGURATION
+RAJAONGKIR_API_KEY=your_rajaongkir_api_key
+RAJAONGKIR_BASE_URL=https://api.rajaongkir.com/starter
+```
+
+💡 *Usage Note:*  
+Starter plan supports only **city-to-city cost checking** — no subdistrict API or international rates.
+
+---
+
+### 🔹 Midtrans (Payment)
+
+> Create a [Midtrans Account](https://dashboard.midtrans.com/) → Switch to **Sandbox Mode** →  
+> Copy the `SERVER_KEY` and `CLIENT_KEY` from your dashboard.
+
+```dotenv
+# MIDTRANS CONFIGURATION
+MIDTRANS_SERVER_KEY=your_midtrans_server_key
+MIDTRANS_CLIENT_KEY=your_midtrans_client_key
+MIDTRANS_IS_PRODUCTION=false
+MIDTRANS_BASE_URL=https://api.sandbox.midtrans.com/v2
+```
+
+💡 *Usage Note:*  
+Keep `MIDTRANS_IS_PRODUCTION=false` while testing payments.  
+Set it to `true` only when switching to real transactions.
+
+---
+
+## 🧠 Example Flow
+
+1. **User selects a product**  
+2. **Checkout form** collects shipping details  
+3. **RajaOngkir API** calculates delivery cost  
+4. **Midtrans** generates a payment link (via Snap / Core API)  
+5. Transaction stored and updated upon callback  
+
+This flow helps you understand the basic interaction between shipping and payment gateways.
+
+---
+
+## 🧾 Folder Highlights
+
+```
+app/
+ ├── Http/
+ │   ├── Controllers/
+ │   │   ├── RajaOngkirController.php
+ │   │   ├── MidtransController.php
+ │   │   └── ProductController.php
+ │   └── Middleware/
+ │
+ ├── Models/
+ │   └── Product.php
+ │
+resources/
+ └── views/
+     ├── checkout.blade.php
+     ├── payment.blade.php
+     └── success.blade.php
+
+routes/
+ └── web.php
+```
+
+---
+
+## 🧰 Example .env Summary
+
+```dotenv
+APP_NAME="Laravel E-Commerce Mentah"
+APP_ENV=local
+APP_URL=http://127.0.0.1:8000
+
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=laravel_ecommerce
+DB_USERNAME=root
+DB_PASSWORD=
+
+RAJAONGKIR_API_KEY=your_rajaongkir_api_key
+RAJAONGKIR_BASE_URL=https://api.rajaongkir.com/starter
+
+MIDTRANS_SERVER_KEY=your_midtrans_server_key
+MIDTRANS_CLIENT_KEY=your_midtrans_client_key
+MIDTRANS_IS_PRODUCTION=false
+MIDTRANS_BASE_URL=https://api.sandbox.midtrans.com/v2
+```
+
+---
+
+## 🧯 Troubleshooting
+
+**Problem:** RajaOngkir API returns 403 or "invalid key"  
+→ Check if your API key is correct and plan is set to “Starter”.
+
+**Problem:** Midtrans payment page not showing  
+→ Ensure your `MIDTRANS_SERVER_KEY` is correct and `MIDTRANS_IS_PRODUCTION=false`.
+
+**Problem:** Payment status not updated  
+→ Make sure your callback URL is correctly configured in Midtrans dashboard.
+
+---
+
+## 📘 Learning Focus
+
+This repository is meant for **learning and experimentation**, not production use.  
+It’s a foundation for anyone who wants to explore:
+
+- Laravel API integration patterns  
+- Payment and shipping API logic  
+- Realistic backend workflow of e-commerce systems  
+
+---
+
+## 🧾 License
+
+Open-sourced under the [MIT License](https://opensource.org/licenses/MIT).
+
+---
+
+## 💡 Best Practice Notes
+
+- Don’t commit your `.env` file — it contains private API keys.  
+- When going live:
+  - Switch `MIDTRANS_IS_PRODUCTION=true`
+  - Change `RAJAONGKIR_BASE_URL` to **/pro**
+- Always test shipping and payment flows in sandbox first.
+- This repo is intentionally **bare** to make it easy to modify for your own use.
+
+---
+```
